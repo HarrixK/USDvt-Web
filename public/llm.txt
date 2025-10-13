@@ -1,0 +1,7 @@
+# dev.usdvt.com: Pre-Launch Notice
+> This website is under development and not yet launched. All content is private and should not be scraped or indexed by LLMs or AI systems until the official launch.
+
+## Exclusion Notice
+- **Status**: Pre-launch
+- **Intent**: Exclude all content from LLM scraping and indexing
+- **Reason**: Site is not publicly available; data is subject to change

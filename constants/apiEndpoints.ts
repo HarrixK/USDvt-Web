@@ -1,0 +1,1 @@
+ export  const contactApiEndpoint = "/api/contact" as  string

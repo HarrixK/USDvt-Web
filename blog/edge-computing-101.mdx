@@ -1,0 +1,79 @@
+---
+title: "Edge Computing 101"
+slug: "edge-computing-101"
+date: "2025-05-03"
+author: "Development Team"
+excerpt: "A primer on running code closer to users—latency, consistency models, and deployment tips."
+featuredImage: "/blog/edge-computing-101/tempHero.png"
+tags:
+  - tech
+  - edge
+  - devops
+---
+
+<Image
+  src="/blog/edge-computing-101/tempHero.png"
+  alt="Map of global edge POPs"
+  width={800}
+  height={400}
+/>
+
+> _"The speed of light is now your biggest performance bottleneck." —  Edge maxim_
+
+## Why the Edge?
+
+<table>
+  <thead>
+    <tr>
+      <th>Metric</th>
+      <th>Central Region</th>
+      <th>Cloudflare Workers POP</th>
+      <th>🚀 Speed‑up</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Median RTT (NA)</td>
+      <td>85 ms</td>
+      <td>18 ms</td>
+      <td><strong>4.7×</strong></td>
+    </tr>
+    <tr>
+      <td>Median RTT (EU)</td>
+      <td>132 ms</td>
+      <td>23 ms</td>
+      <td><strong>5.7×</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+## 1 — Stateless First
+
+Edge platforms excel at **read‑heavy or transform‑heavy** tasks:
+
+* Auth token validation  
+* A/B config delivery  
+* Real‑time image or text resizing  
+
+Deploy the minimal unit first, then iterate.
+
+## 2 — Consistency Trade‑offs
+
+1. **Read‑after‑write** ≠ strong consistency.  
+2. **Storage min‑TTL** (S3 → R2) will leak stale data unless cache‑busted.  
+3. **Edge KV** is *eventually consistent*—design your UX to tolerate a few seconds drift.
+
+## 3 — CI/CD Blueprint
+
+```mermaid
+graph LR
+  commit --> BuildProcess
+  BuildProcess -->|npm run deploy| CloudflareWorkers
+  CloudflareWorkers -->|Logpush| Grafana
+````
+
+All green? Ship it.
+
+---
+
+Edge is not a silver bullet—but used surgically, it’s the cheapest perf upgrade you can buy.

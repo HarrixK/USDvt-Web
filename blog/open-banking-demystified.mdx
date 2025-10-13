@@ -1,0 +1,99 @@
+---
+title: "Open Banking Demystified"
+slug: "open-banking-demystified"
+date: "2025-05-03"
+author: "Development Team"
+excerpt: "How API‑driven banking rails are changing B2B SaaS and consumer finance."
+tags:
+  - fintech
+  - api
+  - banking
+featuredImage: "/blog/open-banking-demystified/tempHero.png"
+---
+
+<Image
+  src="/blog/open-banking-demystified/tempHero.png"
+  alt="Illustration of bank APIs unlocking data"
+  width={800}
+  height={400}
+/>
+
+Open banking started as a regulatory mandate; it's quickly becoming the **de‑facto platform strategy** for modern financial services. In this post we unpack the core concepts and show where engineering teams should focus first.
+
+## TL;DR
+
+* **PSD2 & beyond →** Europe forced the door open. Other regions followed with self‑regulation or market pressure.  
+* **APIs drive loyalty** more than mobile apps—developers integrate once, then stick for years.  
+* **Data aggregation ≠ open banking.** Real‑time payment initiation is where the next 10× UX gains live.
+
+## 1 — Standardised Access Layers
+
+Open‑banking APIs boil down to three resource groups:
+
+<table>
+  <thead>
+    <tr>
+      <th>Group</th>
+      <th>Endpoint examples</th>
+      <th>Typical latency</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Accounts</td>
+      <td>`/accounts`, `/transactions`</td>
+      <td>300 – 800 ms</td>
+    </tr>
+    <tr>
+      <td>Payments</td>
+      <td>`/payments`, `/refunds`</td>
+      <td>400 – 900 ms</td>
+    </tr>
+    <tr>
+      <td>Metadata</td>
+      <td>`/beneficiaries`, `/institutions`</td>
+      <td>&lt;200 ms</td>
+    </tr>
+  </tbody>
+</table>
+
+## 2 — Security Posture
+
+1. **OAuth 2.1** with short‑lived tokens (5 – 10 min).  
+2. **mTLS** is non‑negotiable in production.  
+3. **JWT claims** must include consent scopes *and* PSU (end‑user) identifiers.
+
+## 3 — Build vs Buy Checklist
+
+<table>
+  <thead>
+    <tr>
+      <th>Question</th>
+      <th>When to build</th>
+      <th>When to buy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>&lt;5 banks in target region?</td>
+      <td>❌</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>Proprietary data science pipeline?</td>
+      <td>✅</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>Need licenced payment initiation?</td>
+      <td>❌</td>
+      <td>✅</td>
+    </tr>
+  </tbody>
+</table>
+
+## Next Steps
+
+* Prototype with a sandbox provider (e.g. Plaid Sandbox, Tink EU).  
+* Add "link your bank" to staging behind a feature flag.  
+* Measure **drop‑off vs identity‑verification UX**—that's where most POCs fail.

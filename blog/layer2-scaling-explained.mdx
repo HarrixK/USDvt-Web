@@ -1,0 +1,97 @@
+---
+title: "Layer 2 Scaling Explained"
+slug: "layer2-scaling-explained"
+date: "2025-05-03"
+author: "Development Team"
+excerpt: "Rollups, channels, and why gas fees on mainnet aren't going away tomorrow."
+featuredImage: "/blog/layer2-scaling-explained/tempHero.png"
+tags:
+  - crypto
+  - blockchain
+  - scaling
+---
+
+<Image
+  src="/blog/layer2-scaling-explained/tempHero.png"
+  alt="Diagram of Layer 1 vs Layer 2 rollup"
+  width={800}
+  height={400}
+/>
+
+Ethereum's base layer handles **~15 TPS**. Visa averages **1 700 TPS** on Black Friday.  
+Enter **Layer 2**—protocols that offload computation while retaining mainnet security.
+
+## Layer 2 Families
+
+<table>
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th>Example</th>
+      <th>Finality</th>
+      <th>Cost vs L1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Optimistic</td>
+      <td>Optimism, Base</td>
+      <td>1‑7 days</td>
+      <td>5‑20× cheaper</td>
+    </tr>
+    <tr>
+      <td>ZK‑Rollup</td>
+      <td>zkSync, Starknet</td>
+      <td>&lt;1 hour</td>
+      <td>10‑50× cheaper</td>
+    </tr>
+    <tr>
+      <td>Channels</td>
+      <td>Lightning, Raiden</td>
+      <td>instant</td>
+      <td>negligible</td>
+    </tr>
+  </tbody>
+</table>
+
+## Fraud vs Validity Proofs
+
+* **Optimistic rollups** assume blocks are valid; submitters risk stake if fraud proofs succeed.  
+* **ZK rollups** provide validity upfront via succinct proofs—higher setup cost, faster withdrawals.
+
+## Bridges ≠ Teleportation
+
+1. Every bridge introduces a new trust model—read audits.  
+2. Canonical bridges often subsidise fees; third‑party bridges may not.  
+3. UX friction (multiple wallets, message signing) kills adoption faster than fees.
+
+## Developer To‑Do
+
+```bash
+# Spin up a local zkSync dev node
+npm run dev
+````
+
+* Deploy the same Solidity contracts with minimal tweaks.
+* Benchmark **gas used & calldata size**—those drive costs on L2.
+* Simulate a 7‑day challenge window (optimistic) before sending mainnet messages.
+
+---
+
+Layer 2 won’t fix everything, but it buys time for Danksharding and proto‑danksharding to mature—**and that’s worth experimenting with today.**
+
+
+## Next steps
+
+1. **Copy each snippet** into its own file under `blog/`.  
+2. **Create `hero.png`** (or any placeholder) in the matching sub‑folder:  
+   * `/public/blog/open-banking-demystified/hero.png`  
+   * `/public/blog/edge-computing-101/hero.png`  
+   * `/public/blog/layer2-scaling-explained/hero.png`  
+3. Commit and run `yarn build`. The new posts will appear at:
+
+* `/blog/open-banking-demystified`
+* `/blog/edge-computing-101`
+* `/blog/layer2-scaling-explained`
+
+Happy blogging!

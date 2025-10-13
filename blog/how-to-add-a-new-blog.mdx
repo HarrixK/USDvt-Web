@@ -1,0 +1,117 @@
+---
+title: "How to Add a New Blog Post"
+slug: "how-to-add-a-new-blog"
+date: "2025-05-02"
+author: "Development Team"
+excerpt: "Step‑by‑step guide for adding new MDX blog posts to the website."
+tags:
+  - docs
+  - mdx
+  - development
+featuredImage: "/blog/how-to-add-a-new-blog/tempHero.png"
+---
+
+<Image
+  src="/blog/how-to-add-a-new-blog/tempHero.png"
+  alt="Descriptive alt text"
+  width={800}
+  height={400}
+/>
+
+> _This page is itself an MDX example. Follow the checklist below whenever you create a new post._
+
+## 1 — Create the MDX file
+
+1. In **`/blog`**, add `my-awesome-post.mdx`.  
+2. Start with this front‑matter template:
+
+   ```yaml
+   ---
+   title: "My Awesome Post"
+   slug: "my-awesome-post"          # kebab‑case; becomes `/blog/my-awesome-post`
+   date: "YYYY-MM-DD"
+   author: "Your Name"
+   excerpt: "One‑sentence summary for the index page."
+   tags:
+     - tag1
+     - tag2
+   ---
+   ```
+
+3. Write your content in Markdown (MDX supports inline JSX if you need it).
+
+## 2 — Add images or diagrams (optional)
+
+   ```
+   public/
+   └─ blog/
+      └─ my-awesome-post/
+         ├─ hero.png
+         └─ diagram.svg
+   ```
+
+   Reference them in MDX with **Next.js `<Image>`** (no import statement needed):
+
+   ```mdx
+   <Image
+   src="/blog/my-awesome-post/hero.png"
+   alt="Descriptive alt text"
+   width={800}
+   height={400}
+   />
+   ```
+
+## 3 — Test locally
+
+1. Run `npm run build` or `yarn build`
+2. Run `npm run dev` or `yarn dev`
+3. Open http://localhost:3000/blog/my-awesome-post
+
+## 4 — Validate the build
+
+* Run `npm run build` or `yarn build` — it must pass.  
+* Check that the post appears on **`/blog`** with its excerpt.
+
+## 5 — Open a pull request
+
+1. Commit only:  
+   * `blog/my-awesome-post.mdx`  
+   * any assets under `public/blog/my-awesome-post`  
+2. Push your changes.
+
+---
+
+### Quick reference
+
+<table>
+  <thead>
+    <tr>
+      <th align="left">Task</th>
+      <th align="left">Location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Write post</td>
+      <td><code>/blog/*.mdx</code></td>
+    </tr>
+    <tr>
+      <td>Post assets</td>
+      <td><code>/public/blog/&lt;slug&gt;/</code></td>
+    </tr>
+    <tr>
+      <td>Edit list view</td>
+      <td><code>pages/blog/index.tsx</code></td>
+    </tr>
+    <tr>
+      <td>Edit post layout</td>
+      <td><code>pages/blog/[slug].tsx</code></td>
+    </tr>
+    <tr>
+      <td>MDX helpers</td>
+      <td><code>lib/mdx.ts</code>, <code>lib/mdx-server.ts</code>, <code>lib/posts.ts</code></td>
+    </tr>
+  </tbody>
+</table>
+
+Happy publishing!
